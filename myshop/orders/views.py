@@ -1,5 +1,5 @@
 from cart.cart import Cart
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .forms import OrderCreateForm
 from .models import OrderItem
@@ -29,7 +29,12 @@ def order_create(request):
             # You call the delay() method of the task to execute it asynchronously. The task will be added to the message queue and executed by the Celery worker as soon as possible.
             order_created.delay(order.id)
 
-            return render(request, 'orders/order/created.html', {'order': order})
+            # return render(request, 'orders/order/created.html', {'order': order})
+
+            # set the order in session
+            request.session['order_id'] = order.id
+
+            return redirect('payment.process')
     else:
         form = OrderCreateForm()
     return render(
