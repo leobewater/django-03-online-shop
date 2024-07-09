@@ -34,7 +34,7 @@ def order_create(request):
             # set the order in session
             request.session['order_id'] = order.id
 
-            return redirect('payment.process')
+            return redirect('payment:process')
     else:
         form = OrderCreateForm()
     return render(
