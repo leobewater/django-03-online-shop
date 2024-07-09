@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from .forms import OrderCreateForm
 from .models import OrderItem
+from .tasks import order_created
 
 
 def order_create(request):
@@ -23,6 +24,10 @@ def order_create(request):
 
             # clear the cart
             cart.clear()
+
+            # launch asynchronous task to message broker
+            # You call the delay() method of the task to execute it asynchronously. The task will be added to the message queue and executed by the Celery worker as soon as possible.
+            order_created.delay(order.id)
 
             return render(request, 'orders/order/created.html', {'order': order})
     else:
