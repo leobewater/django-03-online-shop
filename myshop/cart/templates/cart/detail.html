@@ -37,7 +37,7 @@ Your shopping cart
         </form>
       </td>
       <td class="num">${{ item.price }}</td>
-      <td class="num">${{ item.total_price }}< <td class="num">${{ item.total_price }}</td>
+      <td class="num">${{ item.total_price }}</td>
     </tr>
     {% endwith %}
     {% endfor %}
@@ -49,8 +49,7 @@ Your shopping cart
   </tbody>
 </table>
 <p class="text-right">
-  <a href="{% url "shop:product_list" %}" class="button
-    light">Continue shopping</a>
+  <a href="{% url 'shop:product_list' %}" class="button light">Continue shopping</a>
   <a href="#" class="button">Checkout</a>
 </p>
 {% endblock %}
