@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -133,3 +135,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # This is the key that you are going to use to store the cart in the user session. Since Django sessions are managed per visitor, you can use the same cart session key for all sessions.
 CART_SESSION_ID = 'cart'
+
+
+# Email server configuration, using mailTrap for now
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = (config('EMAIL_USE_TLS') == 'True')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
