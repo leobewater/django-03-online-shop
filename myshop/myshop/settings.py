@@ -64,6 +64,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # This will be executed every time a template is rendered using Django's RequestContext
+                'cart.context_processors.cart',
             ],
         },
     },
