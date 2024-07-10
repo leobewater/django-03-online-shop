@@ -9,21 +9,6 @@ from django.utils.safestring import mark_safe
 from .models import Order, OrderItem
 
 
-class OrderItemInline(admin.TabularInline):
-    model = OrderItem
-    raw_id_fields = ['product']
-
-
-def order_payment(obj):
-    url = obj.get_stripe_url()
-    if obj.stripe_id:
-        html = f'<a href="{url}" target="_blank">{obj.stripe_id}</a>'
-        return mark_safe(html)
-    return ''
-
-
-order_payment.short_description = 'Stripe payment'
-
 
 # custom action
 def export_to_csv(modeladmin, request, queryset):
@@ -32,7 +17,7 @@ def export_to_csv(modeladmin, request, queryset):
     content_disposition = (
         f'attachment; filename={opts.verbose_name}.csv'
     )
-    response = HttpResponse(content_type="text/csv")
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = content_disposition
     writer = csv.writer(response)
 
@@ -62,10 +47,36 @@ def export_to_csv(modeladmin, request, queryset):
 export_to_csv.short_description = 'Export to CSV'
 
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    raw_id_fields = ['product']
+
+
+def order_payment(obj):
+    url = obj.get_stripe_url()
+    if obj.stripe_id:
+        html = f'<a href="{url}" target="_blank">{obj.stripe_id}</a>'
+        return mark_safe(html)
+    return ''
+
+
+order_payment.short_description = 'Stripe payment'
+
+
+
 # Custom Admin Order Detail
 def order_detail(obj):
     url = reverse('orders:admin_order_detail', args=[obj.id])
     return mark_safe(f'<a href="{url}">View</a>')
+
+
+# Order PDF
+def order_pdf(obj):
+    url = reverse('orders:admin_order_pdf', args=[obj.id])
+    return mark_safe(f'<a href="{url}">PDF</a>')
+
+
+order_pdf.short_description = 'Invoice'
 
 
 @admin.register(Order)
@@ -83,6 +94,7 @@ class OrderAdmin(admin.ModelAdmin):
         'created',
         'updated',
         order_detail,
+        order_pdf,
     ]
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
