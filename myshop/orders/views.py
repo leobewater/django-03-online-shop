@@ -1,11 +1,11 @@
 import weasyprint
+from cart.cart import Cart
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.staticfiles import finders
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 
-from cart.cart import Cart
 from .forms import OrderCreateForm
 from .models import Order, OrderItem
 from .tasks import order_created
@@ -16,7 +16,14 @@ def order_create(request):
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
+
+            # Apply discount
+            if cart.coupon:
+                order.coupon = cart.coupon
+                order.discount = cart.coupon.discount
+
+            order.save()
 
             # Create and Save Order Items
             for item in cart:
