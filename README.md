@@ -19,4 +19,7 @@ Book: Django 5 by Example (5th Edition)
 # Stripe webhook, open another terminal
 > stripe login
 > stripe listen --forward-to 127.0.0.1:8000/payment/webhook/
+
+# collect all static file
+> python manage.py collectstatic
 ```
