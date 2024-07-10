@@ -4,6 +4,11 @@ Book: Django 5 by Example (5th Edition)
 ```
 > py manage.py runserver
 
+# use docker compose instead
+> docker compose up
+# http://127.0.0.1:8000/admin/
+# http://127.0.0.1:8000/
+
 # run celery, open another terminal
 > source env/myshop/bin/activate
 > cd myshop
