@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'payment',
     'coupons',
     'shop',
-    'rosetta',
-    'parler',
+    'rosetta',  # translation
+    'parler',  # models translation
+    'localflavor'  # localization date and currency
 ]
 
 MIDDLEWARE = [
