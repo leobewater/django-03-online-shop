@@ -9,5 +9,4 @@ urlpatterns = [
     path(_('process/'), views.payment_process, name='process'),
     path(_('completed/'), views.payment_completed, name='completed'),
     path(_('canceled/'), views.payment_canceled, name='canceled'),
-    path(_('webhook/'), webhooks.stripe_webhook, name='stripe-webhook'),
 ]

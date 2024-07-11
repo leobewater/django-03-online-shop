@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-11 08:24-0400\n"
+"POT-Creation-Date: 2024-07-11 08:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,13 +97,39 @@ msgstr "Comprar"
 msgid "Coupon"
 msgstr "Cupón"
 
-#: myshop/settings.py:169
+#: myshop/settings.py:170
 msgid "English"
 msgstr "Inglés"
 
-#: myshop/settings.py:170
+#: myshop/settings.py:171
 msgid "Spanish"
 msgstr "Español"
+
+#: myshop/urls.py:12
+msgid "cart/"
+msgstr ""
+
+#: myshop/urls.py:13
+msgid "orders/"
+msgstr ""
+
+#: myshop/urls.py:14
+msgid "payment/"
+msgstr ""
+
+#: myshop/urls.py:15
+#, fuzzy
+#| msgid "Coupon"
+msgid "coupons/"
+msgstr "Cupón"
+
+#: myshop/urls.py:16
+msgid "rosetta/"
+msgstr ""
+
+#: myshop/urls.py:22
+msgid "payment/webhook/"
+msgstr ""
 
 #: payment/templates/payment/canceled.html:4
 msgid "Payment canceled"
@@ -151,6 +177,20 @@ msgstr ""
 #: payment/templates/payment/process.html:62
 msgid "Pay now"
 msgstr "Pagar ahora"
+
+#: payment/urls.py:9
+msgid "process/"
+msgstr ""
+
+#: payment/urls.py:10
+msgid "completed/"
+msgstr ""
+
+#: payment/urls.py:11
+#, fuzzy
+#| msgid "Payment canceled"
+msgid "canceled/"
+msgstr "Pago cancelado"
 
 #: shop/templates/shop/base.html:7 shop/templates/shop/base.html:13
 msgid "My shop"
