@@ -44,4 +44,6 @@ Book: Django 5 by Example (5th Edition)
 
 # Rosetta - edit translation in browser 
 # http://127.0.0.1:8000/rosetta/
+# edit translation and click save
+# Rosetta compiles the message file, no need to run compilemessages command
 ```
