@@ -188,3 +188,4 @@ PARLER_LANGUAGES = {
         'fallback': 'en',
         'hide_untranslated': False,
     }
+}
