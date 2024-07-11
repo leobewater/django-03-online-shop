@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'payment',
     'coupons',
     'shop',
+    'rosetta',
 ]
 
 MIDDLEWARE = [

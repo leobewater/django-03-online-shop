@@ -41,4 +41,7 @@ Book: Django 5 by Example (5th Edition)
 > django-admin makemessages --all
 # manually enter the translations then trun this to generate the .mo files
 > django-admin compilemessages
+
+# Rosetta - edit translation in browser 
+# http://127.0.0.1:8000/rosetta/
 ```
