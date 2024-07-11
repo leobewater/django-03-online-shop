@@ -32,4 +32,13 @@ Book: Django 5 by Example (5th Edition)
 # Troubleshoot on mac for weasyprint
 # https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation
 > export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
+
+# localization
+> brew install gettext
+> brew link --force gettext
+# set the gettext_lazy() to your code and run this to generate the .po files
+> django-admin makemessages --all
+# manually enter the translations then trun this to generate the .mo files
+> django-admin compilemessages
 ```
