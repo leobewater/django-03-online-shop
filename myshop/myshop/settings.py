@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'coupons',
     'shop',
     'rosetta',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -174,3 +175,16 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
+
+
+# django-parler settings
+# parler creates separate db tables for each model that contains translations
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
